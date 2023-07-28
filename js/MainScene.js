@@ -23,9 +23,16 @@ export default class MainScene extends Phaser.Scene {
 		const speed = 2.5;
 		let playerVelocity = new Phaser.Math.Vector2();
 		if (this.inputKeys.left.isDown) {
-			playerVelocity.X = -1;
+			playerVelocity.x = -1;
 		} else if (this.inputKeys.right.isDown) {
-			playerVelocity.X = 1;
+			playerVelocity.x = 1;
 		}
+		if (this.inputKeys.up.isDown) {
+			playerVelocity.y = -1;
+		} else if (this.inputKeys.down.isDown) {
+			playerVelocity.y = 1;
+		}
+		playerVelocity.scale(speed);
+		this.player.setVelocity(playerVelocity.x, playerVelocity.y);
 	}
 }
